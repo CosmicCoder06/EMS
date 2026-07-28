@@ -49,5 +49,5 @@ Employee-Management-System/
 - Add page pagination and dashboard statistics cards (Average Salary, Department Counts).
 
 ## Author Information
-- **Name**: Student (ayush-68789)
+- **Name**: Student (Abhinav Yadav)
 - **Course**: JOVAC CodroidHub Advanced MERN
