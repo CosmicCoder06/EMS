@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modern employee management dashboard">
+  <title>Employee Manager | Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="header-container">
+      <a class="brand" href="#" aria-label="Employee Manager home">
+        <span class="brand-mark">EM</span>
+        <span class="brand-copy">
+          <strong>Employee Manager</strong>
+          <small>Workspace</small>
+        </span>
+      </a>
+
+      <nav class="navigation" aria-label="Primary navigation">
+        <a href="#" class="active">Overview</a>
+        <a href="#registration">Add Employee</a>
+        <a href="#employees">Directory</a>
+        <button id="darkModeToggle" class="dark-mode-btn" type="button">🌙 Dark Mode</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="intro-section">
+      <div class="intro-copy">
+        <span class="eyebrow">WORKFORCE DASHBOARD</span>
+        <h1>Manage your team from one place.</h1>
+        <p>Add employee records, find people instantly, update details and keep your staff directory organised.</p>
+        <div class="hero-actions">
+          <a href="#registration" class="hero-primary">+ Add employee</a>
+          <a href="#employees" class="hero-secondary">View directory</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <div class="hero-badge badge-a">IT</div>
+        <div class="hero-badge badge-b">HR</div>
+        <div class="hero-badge badge-c">MK</div>
+        <div class="hero-team-icon">👥</div>
+      </div>
+    </section>
+
+    <section class="stats-section" aria-label="Employee statistics">
+      <div class="stats-grid">
+        <article class="stat-card">
+          <div class="stat-icon purple">👥</div>
+          <div>
+            <h3>Total Employees</h3>
+            <p id="statTotal" class="stat-number">0</p>
+            <span class="stat-caption">Active records</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon blue">↗</div>
+          <div>
+            <h3>Average Salary</h3>
+            <p id="statAvgSalary" class="stat-number">$0</p>
+            <span class="stat-caption">Yearly average</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon amber">▦</div>
+          <div>
+            <h3>Departments</h3>
+            <p id="statDepts" class="stat-number">0</p>
+            <span class="stat-caption">Across company</span>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon green">★</div>
+          <div>
+            <h3>Highest Salary</h3>
+            <p id="statHighest" class="stat-number">$0</p>
+            <span class="stat-caption">Top annual salary</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="workspace-grid">
+      <section id="registration" class="form-section">
+        <article class="card form-card">
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">EMPLOYEE RECORD</span>
+              <h2>Add New Employee</h2>
+              <p class="section-desc">Enter the employee details below to create a new staff record.</p>
+            </div>
+            <span class="heading-icon">＋</span>
+          </div>
+
+          <form id="employeeForm">
+            <div class="form-grid">
+              <div class="form-group form-span-2">
+                <label for="empName">Employee Name</label>
+                <input type="text" id="empName" placeholder="e.g. Akshat Upadhyay" required>
+              </div>
+
+              <div class="form-group form-span-2">
+                <label for="empEmail">Email Address</label>
+                <input type="email" id="empEmail" placeholder="name@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="empDept">Department</label>
+                <select id="empDept" required>
+                  <option value="" disabled selected>Select department</option>
+                  <option value="IT &amp; Development">IT &amp; Development</option>
+                  <option value="Human Resources">Human Resources</option>
+                  <option value="Marketing &amp; Sales">Marketing &amp; Sales</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Operations">Operations</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="empPosition">Position</label>
+                <input type="text" id="empPosition" placeholder="Software Engineer" required>
+              </div>
+
+              <div class="form-group">
+                <label for="empSalary">Salary (USD / Year)</label>
+                <input type="number" id="empSalary" min="1000" max="1000000" placeholder="65000" required>
+              </div>
+
+              <div class="form-group">
+                <label for="empPhoto">Profile Photo</label>
+                <input type="file" id="empPhoto" accept="image/*">
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" id="submitBtn" class="btn btn-submit">Save Employee</button>
+              <button type="reset" id="resetBtn" class="btn btn-reset">Clear Form</button>
+            </div>
+          </form>
+        </article>
+      </section>
+
+      <section id="filters" class="search-section">
+        <article class="card filter-card">
+          <div class="section-heading compact">
+            <div>
+              <span class="section-kicker">QUICK FIND</span>
+              <h2>Search Directory</h2>
+              <p class="section-desc">Narrow down staff records instantly.</p>
+            </div>
+            <span class="heading-icon">⌕</span>
+          </div>
+
+          <div class="filter-controls">
+            <div class="control-group">
+              <label for="searchName">Employee name</label>
+              <div class="input-with-icon">
+                <span>⌕</span>
+                <input type="text" id="searchName" placeholder="Search by name...">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label for="filterDept">Department</label>
+              <select id="filterDept">
+                <option value="all">All Departments</option>
+                <option value="IT &amp; Development">IT &amp; Development</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Marketing &amp; Sales">Marketing &amp; Sales</option>
+                <option value="Finance">Finance</option>
+                <option value="Operations">Operations</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-tip">
+            <span>⚡</span>
+            <p>Results update automatically while you type or change the department.</p>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <section id="employees" class="table-section">
+      <article class="card directory-card">
+        <div class="directory-header">
+          <div>
+            <span class="section-kicker">TEAM DATABASE</span>
+            <h2>Employee Directory</h2>
+            <p class="section-desc">View, sort, edit and manage all registered employees.</p>
+          </div>
+
+          <div class="data-actions">
+            <button id="exportJsonBtn" class="btn btn-secondary">Export JSON</button>
+            <button id="exportCsvBtn" class="btn btn-secondary">Export CSV</button>
+            <label class="btn btn-import">
+              Import JSON
+              <input type="file" id="importJsonInput" accept=".json" hidden>
+            </label>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="employee-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th class="sortable" data-column="id">Employee ID</th>
+                <th class="sortable" data-column="name">Employee Name</th>
+                <th class="sortable" data-column="email">Email</th>
+                <th class="sortable" data-column="department">Department</th>
+                <th class="sortable" data-column="position">Position</th>
+                <th class="sortable" data-column="salary">Salary</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="employeeTableBody">
+              <tr>
+                <td colspan="8" class="no-records">No records found. Add or import employees to get started.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination-controls">
+          <button id="prevPageBtn" class="btn btn-page">← Previous</button>
+          <span id="pageInfo">Page 1 of 1</span>
+          <button id="nextPageBtn" class="btn btn-page">Next →</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="brand-mark small">EM</span>
+        <span>Employee Manager</span>
+      </div>
+      <p>© 2026 Employee Management System · HTML, CSS &amp; JavaScript</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
